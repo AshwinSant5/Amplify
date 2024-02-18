@@ -19,10 +19,10 @@ def play_audio(file_path):
         print("Error playing audio:", e)
 
 if __name__ == "__main__":
-    #audio_recorder = audio_recording.AudioRecording()
-    #audio_recorder.record(record_seconds=10)
+    audio_recorder = audio_recording.AudioRecording()
+    audio_recorder.record(record_seconds=10)
     # Assume 'notes' and 'lyrics' are provided
-    media_file_path = 'NaturalLanguage/test3.mp3'
+    media_file_path = 'recorded_audio.mp3'
     extractor = audio_extraction.NoteExtractor(media_file_path)
     notes = extractor.extract_notes()
     print("Extracted notes:\n", notes)
