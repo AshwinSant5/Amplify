@@ -42,6 +42,15 @@ class AudioRecording:
         wf.close()
         print("Recording saved as", WAVE_OUTPUT_FILENAME)
 
+        WAVE_OUTPUT_FILENAME2 = "recorded_audio.wav"
+
+        wf2 = wave.open(WAVE_OUTPUT_FILENAME2, 'wb')
+        wf2.setnchannels(self.CHANNELS)
+        wf2.setsampwidth(p.get_sample_size(self.FORMAT))
+        wf2.setframerate(self.RATE)
+        wf2.writeframes(b''.join(frames))
+        wf2.close()
+
         p.terminate()
 
 if __name__ == "__main__":
