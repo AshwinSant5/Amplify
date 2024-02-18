@@ -3,14 +3,27 @@ from openai import OpenAI
 #api_key = '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'
 #model_id = 'whisper-1'
 
-client = OpenAI(api_key = '') #REPLACE API KEY WITH NEW ONE FROM OPENAI API WEBPAGE
+class Transcriber: 
+    def __init__(self, api_key='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', model_id='whisper-1'):
+        self.client = OpenAI(api_key=api_key)
+        self.model_id = model_id
+    
+    def transcribe_audio(self, file_path):
+        #client = OpenAI(api_key = '') #REPLACE API KEY WITH NEW ONE FROM OPENAI API WEBPAGE
 
-media_file_path = 'test3.mp3'
-media_file = open(media_file_path, 'rb')
+        #media_file_path = file_path
+        #media_file = open(media_file_path, 'rb')
 
-with open("test3.mp3", "rb") as audio_file:
-    transcription = client.audio.transcriptions.create(
-        model="whisper-1", 
-        file=audio_file
-        )
-    print(transcription.text)
+        with open(file_path, "rb") as audio_file:
+            transcription = self.client.audio.transcriptions.create(
+                model=self.model_id, 
+                file=audio_file
+                )
+            return(transcription.text)
+        
+if __name__ == "__main__":
+    transcriber = Transcriber()
+
+    media_file_path = 'recorded_audio.mp3'
+    transcription_text = transcriber.transcribe_audio(media_file_path)
+    print(transcription_text)
