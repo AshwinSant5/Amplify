@@ -1,10 +1,9 @@
 from openai import OpenAI
 
-#api_key = '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'
 #model_id = 'whisper-1'
 
 class Transcriber: 
-    def __init__(self, api_key='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', model_id='whisper-1'):
+    def __init__(self, api_key='API-KEY', model_id='whisper-1'):
         self.client = OpenAI(api_key=api_key)
         self.model_id = model_id
     
