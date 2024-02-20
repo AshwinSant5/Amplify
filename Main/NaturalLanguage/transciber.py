@@ -4,7 +4,7 @@ from openai import OpenAI
 #model_id = 'whisper-1'
 
 class Transcriber: 
-    def __init__(self, api_key='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', model_id='whisper-1'):
+    def __init__(self, api_key='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', model_id='whisper-1'):
         self.client = OpenAI(api_key=api_key)
         self.model_id = model_id
     
